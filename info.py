@@ -13,9 +13,9 @@ def is_enabled(value, default):
 
 # Bot information
 SESSION = environ.get('SESSION', 'Media_search')
-API_ID = int(environ.get('API_ID', '22645'))
-API_HASH = environ.get('API_HASH', '94a089020a2290fd29a41f18')
-BOT_TOKEN = environ.get('BOT_TOKEN', "0310745:AAEcOugP9x6GN8noxi4rZ7M8UF00sk")
+API_ID = int(environ.get('API_ID', ''))
+API_HASH = environ.get('API_HASH', '')
+BOT_TOKEN = environ.get('BOT_TOKEN', "")
 
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
@@ -42,9 +42,9 @@ reqst_channel = environ.get('REQST_CHANNEL_ID', '') # request channel id ( make 
 
 
 # MongoDB information
-DATABASE_URI = environ.get('DATABASE_URI', "mongodb")
-DATABASE_URI2 = environ.get('DATABASE_URI2', "mongodb")
-DATABASE_NAME = environ.get('DATABASE_NAME', "yato")
+DATABASE_URI = environ.get('DATABASE_URI', "")
+DATABASE_URI2 = environ.get('DATABASE_URI2', "")
+DATABASE_NAME = environ.get('DATABASE_NAME', "")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 # index movie Notification & update channel 
@@ -65,8 +65,8 @@ HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', 'https://t.me/How_to_Download_7x/32
 
 # Shortner 
 IS_SHORTLINK = bool(environ.get('IS_SHORTLINK', False))
-SHORTLINK_URL = environ.get('SHORTLINK_URL', 'inshorturl.com')
-SHORTLINK_API = environ.get('SHORTLINK_API', '1d74269ab2c3349995cd15776033eea192df8327')
+SHORTLINK_URL = environ.get('SHORTLINK_URL', '')
+SHORTLINK_API = environ.get('SHORTLINK_API', '')
 TUTORIAL = environ.get('TUTORIAL', 'https://t.me/How_to_Download_7x/32') # Tutorial video link for opening shortlink website 
 IS_TUTORIAL = bool(environ.get('IS_TUTORIAL', False))
 
