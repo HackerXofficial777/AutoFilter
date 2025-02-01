@@ -352,46 +352,26 @@ async def start(client, message):
                     continue
             await asyncio.sleep(1) 
         return await sts.delete()
-
+   
     elif data.split("-", 1)[0] == "verify":
         userid = data.split("-", 2)[1]
-        token = data.split("-", 3)[2] 
-        fileid = data.split("-", 3)[3]
+        token = data.split("-", 3)[2]
         if str(message.from_user.id) != str(userid):
             return await message.reply_text(
                 text="<b>Invalid link or Expired link !</b>",
-                protect_content=False
+                protect_content=True
             )
         is_valid = await check_token(client, userid, token)
         if is_valid == True:
-            btn = [[
-                InlineKeyboardButton("• ᴄʟɪᴄᴋ ʜᴇʀᴇ ᴛᴏ ɢᴇᴛ ғɪʟᴇ •", url=f"https://telegram.me/{temp.U_NAME}?start=files_{fileid}")
-            ],[
-                InlineKeyboardButton("• ɴᴏᴠᴀ ғʟɪx •", url=CHNL_LNK)
-            ]]
-            await message.reply_photo(
-                photo="https://graph.org/file/6928de1539e2e80e47fb8.jpg",
-                caption=f"<b>👋 ʜᴇʏ {message.from_user.mention}, ʏᴏᴜ'ʀᴇ ᴀʀᴇ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ᴠᴇʀɪꜰɪᴇᴅ ✅\n\nɴᴏᴡ ʏᴏᴜ'ᴠᴇ ᴜɴʟɪᴍɪᴛᴇᴅ ᴀᴄᴄᴇꜱꜱ ᴛɪʟʟ ɴᴇxᴛ ᴠᴇʀɪꜰɪᴄᴀᴛɪᴏɴ 🎉</b>",
-                reply_markup=InlineKeyboardMarkup(btn)
+            await message.reply_text(
+                text=f"<b>Hey {message.from_user.mention}, You are successfully verified !\nNow you have unlimited access for all movies till today midnight.</b>",
+                protect_content=True
             )
-            await verify_user(client, userid, token) 
-            await vr_db.save_verification(message.from_user.id) 
-            now = datetime.now()
-            current_time = now.strftime("%H:%M:%S")
-            current_date = now.strftime("%Y-%m-%d")
-            
-            codeflix_message = (
-                f"Name: {message.from_user.mention}\n"
-                f"Time: {current_time}\n"
-                f"Date: {current_date}\n"
-                f"#verify_completed"
-            )
-            await client.send_message(chat_id=VERIFIED_LOG, text=codeflix_message)
-
+            await verify_user(client, userid, token)
         else:
             return await message.reply_text(
                 text="<b>Invalid link or Expired link !</b>",
-                protect_content=False
+                protect_content=True
             )
     if data.startswith("sendfiles"):
         current_time = datetime.now(pytz.timezone(TIMEZONE))
